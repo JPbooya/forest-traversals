@@ -28,6 +28,12 @@ public class TreeProblems {
    If the root is null, do nothing.
    */
   public static <T> void postOrder(Node<T> root) {
+    if(root == null ) return ;
+
+    for(Node<T> childrens : root.children ) {
+      postOrder(childrens);
+    }
+    System.out.println(root.value);
   }
 
   /*
