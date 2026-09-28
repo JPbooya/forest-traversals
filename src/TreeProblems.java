@@ -1,5 +1,7 @@
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class TreeProblems {
 
@@ -135,7 +137,7 @@ public class TreeProblems {
      20 -> [40]
      8  -> []
      30 -> []
-     10 -> [20, 30, 99]
+     10 -> [20, 30, 99].
      40 -> []
      99 -> [8]
    then the method should return 10.
@@ -145,6 +147,18 @@ public class TreeProblems {
    Hint: No recursion needed! Think about how you would do this by hand.
   */
   public static <T> T findRoot(Map<T, List<T>> tree) {
+
+    Set<T> children = new HashSet<>();
+    for(List<T> childrens : tree.values()) {
+      children.addAll(childrens);
+    }
+
+    for(T childrens : tree.keySet()) {
+      if(!children.contains(childrens)) {
+        return childrens;
+      }
+    }
+
     return null;
   }
 
